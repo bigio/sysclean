@@ -174,6 +174,9 @@ sub add_expected_base
 	foreach my $filename (</etc/hostname.*>) {
 		$self->{expected}{$filename} = 1;
 	}
+
+	my $OSrev = $Config{osvers};
+	$OSrev =~ s/\.//;
 	foreach my $filename (</etc/bsd.syspatch$Config{osvers}*>) {
 		$self->{expected}{$filename} = 1;
 	}
