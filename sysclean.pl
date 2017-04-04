@@ -112,6 +112,7 @@ sub init_ignored
 		'/var/run' => 1,
 		'/var/spool/smtpd' => 1,
 		'/var/sysmerge' => 1,
+		'/var/syspatch' => 1,
                 '/var/www/htdocs' => 1,
 		'/var/www/logs' => 1,
 		'/var/www/run' => 1,
@@ -137,6 +138,8 @@ sub init
 sub add_expected_base
 {
 	my $self = shift;
+
+	use Config;
 
 	# simple files expected (and not in locate databases)
 	$self->{expected} = {
@@ -169,6 +172,9 @@ sub add_expected_base
 
 	# additionnal expected files, using pattern
 	foreach my $filename (</etc/hostname.*>) {
+		$self->{expected}{$filename} = 1;
+	}
+	foreach my $filename (</etc/bsd.syspatch$Config{osvers}*>) {
 		$self->{expected}{$filename} = 1;
 	}
 
