@@ -112,7 +112,6 @@ sub init_ignored
 		'/var/run' => 1,
 		'/var/spool/smtpd' => 1,
 		'/var/sysmerge' => 1,
-		'/var/syspatch' => 1,
                 '/var/www/htdocs' => 1,
 		'/var/www/logs' => 1,
 		'/var/www/run' => 1,
